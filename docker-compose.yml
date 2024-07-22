@@ -15,8 +15,20 @@ services:
     command: postgres
     restart: always
 
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin_den@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgresql
+
   redis:
     image: redis:alpine3.14
     container_name: redis-lesson
     ports:
       - '6379-6379'
+
