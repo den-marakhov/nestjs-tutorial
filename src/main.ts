@@ -15,6 +15,7 @@ async function bootstrap() {
                 .setDescription('NestJS api description')
                 .setVersion('1.0')
                 .addTag('API')
+                .addTag('Watchlist')
                 .addTag("Cats")
                 .build();
   

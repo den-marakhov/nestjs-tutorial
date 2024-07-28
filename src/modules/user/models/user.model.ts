@@ -1,6 +1,7 @@
 
 import { ApiProperty } from "@nestjs/swagger";
-import { Table, Model, Column, DataType} from "sequelize-typescript";
+import { Table, Model, Column, DataType, HasMany} from "sequelize-typescript";
+import { WatchListModel } from "src/modules/watchlist/model/watchlist.model";
 
 
 @Table({tableName: 'users'})
@@ -25,4 +26,10 @@ export class UserModel extends Model<UserModel> {
     @ApiProperty({example: '123456', description: 'User password'})
     @Column({type: DataType.STRING, allowNull: false})
     password: string;
+
+    @HasMany(() => WatchListModel, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
+    watchlist: WatchListModel[];
 }
