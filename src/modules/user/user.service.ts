@@ -3,6 +3,8 @@ import { InjectModel } from '@nestjs/sequelize';
 import { UserModel } from './models/user.model';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto, UpdateUserDto } from './dto';
+import { WatchListModel } from '../watchlist/model/watchlist.model';
+
 
 
 @Injectable()
@@ -50,6 +52,10 @@ constructor(@InjectModel(UserModel) private readonly userRepository: typeof User
         },
         attributes: {
             exclude: ['password']
+        },
+        include: {
+            model: WatchListModel,
+            required: false
         }
     })
    }
