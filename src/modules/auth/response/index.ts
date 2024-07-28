@@ -1,8 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString, IsEmail, MinLength, IsJWT } from "class-validator";
 
-
-export class AuthUserResponse {
+class UserResponse {
 
     @IsString()
     @IsNotEmpty()
@@ -24,6 +23,13 @@ export class AuthUserResponse {
     @MinLength(6)
     @ApiProperty({example: '12345', description: 'User password'})
     password: string;
+
+}
+
+export class AuthUserResponse {
+
+    @ApiProperty()
+    user: UserResponse
 
     @IsString()
     @IsJWT()
